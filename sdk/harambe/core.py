@@ -582,7 +582,8 @@ class SDK:
         message = " ".join(str(arg) for arg in args)
 
         print(message)
-        await self.page.evaluate(f"console.log('{message.replace("'", "\\'")}')")
+        escaped_message = message.replace("'", "\\'")
+        await self.page.evaluate(f"console.log('{escaped_message}')")
 
     @staticmethod
     async def run_from_file(
