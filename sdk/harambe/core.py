@@ -558,8 +558,8 @@ class SDK:
 
             if not harness_options.get("disable_go_to_url", False):
                 response = await page.goto(url)
-                if response.status >= 400:
-                    await goto_error_handler(url, response.status, response.headers)
+                # if response.status >= 400:
+                #     await goto_error_handler(url, response.status, response.headers)
             elif isinstance(page, SoupPage):
                 page.url = url
             await scraper(sdk, url, context)
