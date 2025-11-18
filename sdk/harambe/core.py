@@ -294,25 +294,22 @@ class SDK:
         """
 
         async with self.page.expect_download(timeout=timeout) as download_info:
-            await clickable.click()
-        download = await download_info.value
-        path = str(await download.path())
+            try:
+                await clickable.click()
+            except Exception:
+                print("Navigation cancelled due to download (expected behavior)")
+    
+            download = await download_info.value
 
-        # Create a temporary file to save the download
-        with tempfile.NamedTemporaryFile() as temp_file:
-            await download.save_as(temp_file.name)
-            with open(temp_file.name, "rb") as f:
-                content = f.read()
+            # Check for download errors
+            failure = await download.failure()
+            if failure:
+                print(f"Error happened on download: {failure}")
+                raise Exception(failure)
 
-        res = await self._notify_observers(
-            "on_download",
-            override_url if override_url else download.url,
-            override_filename if override_filename else download.suggested_filename,
-            content,
-            path,
-            check_duplication=False,
-        )
-        return res[0]
+            return {
+                "url": download.suggested_filename
+            }
 
     async def capture_html(
         self,
