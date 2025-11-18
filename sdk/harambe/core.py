@@ -301,11 +301,11 @@ class SDK:
     
             download = await download_info.value
 
-            # Check for download errors
-            failure = await download.failure()
-            if failure:
-                print(f"Error happened on download: {failure}")
-                raise Exception(failure)
+            # # Check for download errors
+            # failure = await download.failure()
+            # if failure:
+            #     print(f"Error happened on download: {failure}")
+            #     raise Exception(failure)
 
             return {
                 "url": download.suggested_filename
