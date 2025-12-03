@@ -292,24 +292,26 @@ class SDK:
 
         :return DownloadMeta: A typed dict containing the download metadata such as the `url` and `filename`
         """
+        # TODO: We need to implement this properly
+        return {"url":"DUMMY_URL", "filename":"DUMMY_FILENAME", "path":"DUMMY_PATH"}
 
-        async with self.page.expect_download(timeout=timeout) as download_info:
-            try:
-                await clickable.click()
-            except Exception:
-                print("Navigation cancelled due to download (expected behavior)")
+        # async with self.page.expect_download(timeout=timeout) as download_info:
+        #     try:
+        #         await clickable.click()
+        #     except Exception:
+        #         print("Navigation cancelled due to download (expected behavior)")
     
-            download = await download_info.value
+        #     download = await download_info.value
 
-            # # Check for download errors
-            # failure = await download.failure()
-            # if failure:
-            #     print(f"Error happened on download: {failure}")
-            #     raise Exception(failure)
+        #     # # Check for download errors
+        #     # failure = await download.failure()
+        #     # if failure:
+        #     #     print(f"Error happened on download: {failure}")
+        #     #     raise Exception(failure)
 
-            return {
-                "url": download.suggested_filename
-            }
+        #     return {
+        #         "url": download.suggested_filename
+        #     }
 
     async def capture_html(
         self,
