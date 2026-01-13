@@ -497,7 +497,7 @@ requires-dist = [
     { name = "markdownify", specifier = "==0.14.1" },
     { name = "playwright", specifier = "==1.47.0" },
     { name = "playwright-stealth", specifier = "==1.0.6" },
-    { name = "requests", specifier = "==2.32.3" },
+    { name = "requests", specifier = "==2.32.5" },
     { name = "setuptools", specifier = ">=73.0.0" },
     { name = "ua-generator", specifier = "==1.0.5" },
     { name = "wrapt", specifier = ">=1.17.2" },
