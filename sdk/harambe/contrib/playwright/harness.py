@@ -4,7 +4,6 @@ from contextlib import asynccontextmanager
 from typing import Any, AsyncGenerator, Awaitable, Callable, Optional, Sequence, cast
 
 from playwright.async_api import BrowserContext, ViewportSize, async_playwright, Page
-from playwright_stealth import stealth_async
 
 from harambe.contrib.playwright.impl import PlaywrightPage
 from harambe.handlers import UnnecessaryResourceHandler
@@ -145,8 +144,6 @@ async def playwright_harness(
 
             if on_new_page:
                 await on_new_page(page)
-            if stealth:
-                await stealth_async(page)
             return page  # type: ignore
 
         try:
