@@ -1,6 +1,6 @@
 [project]
 name = "harambe-core"
-version = "0.77.5"
+version = "0.77.6"
 description = "Core types for harambe SDK 🐒🍌"
 authors = [
     { name = "Adam Watkins", email = "adam@reworkd.ai" }
@@ -8,11 +8,11 @@ authors = [
 requires-python = ">=3.11,<4.0"
 readme = "README.md"
 dependencies = [
-    "pydantic==2.12.4",
-    "dateparser==1.2.0",
-    "email-validator==2.2.0",
-    "phonenumbers==8.13.47",
-    "python-slugify==8.0.4",
+    "pydantic>=2.12.4,<3",
+    "dateparser>=1.2.0",
+    "email-validator>=2.2.0",
+    "phonenumbers>=8.13.47",
+    "python-slugify>=8.0.4",
     "price-parser>=0.4.0",
 ]
 
